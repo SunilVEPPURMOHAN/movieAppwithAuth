@@ -11,6 +11,9 @@ app.get("/",(req,res)=>{
 app.use("/user",userRouter)
 
 
+
+setupDefault();
+
 // Curb Cores Error by adding a header here
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -25,7 +28,6 @@ app.use((req, res, next) => {
   next();
 });
 
-setupDefault();
 
 app.listen(process.env.PORT,async()=>{
     await conn
