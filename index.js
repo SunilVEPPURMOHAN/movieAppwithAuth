@@ -4,15 +4,6 @@ require('dotenv').config()
 const userRouter=require("./routes/user.route");
 const { setupDefault } = require('./startUp/defaultdb');
 const app=express();
-app.use(express.json())
-app.get("/",(req,res)=>{
-    res.send("welcome")
-})
-app.use("/user",userRouter)
-
-
-
-setupDefault();
 
 // Curb Cores Error by adding a header here
 app.use((req, res, next) => {
@@ -28,6 +19,16 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(express.json())
+app.get("/",(req,res)=>{
+    res.send("welcome")
+})
+app.use("/user",userRouter)
+
+
+
+setupDefault();
 
 app.listen(process.env.PORT,async()=>{
     await conn
