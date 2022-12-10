@@ -4,7 +4,6 @@ const { saltrounds } = require("../controllers/user.controller");
 const fs = require('fs');
 const Movie = require("../models/movie.model");
 const moviedb = require("./moviedb.json");
-const { createMovies } = require("../controllers/movie.controller");
 moviedb.forEach((movie)=>{movie.createdBy = "admin"})
  
 module.exports.setupDefault = async(req,res,next)=>{
@@ -16,6 +15,14 @@ const user = await User.create({name:"admin",email:"admin@email.com",password:bc
 //Creating default moviedb
 
 // Insert the objects into the database
-createMovies(moviedb);
+Movie.create(moviedb,(err, docs) => {
+  if (err) {
+    // const errCount = err.length;
+    // console.log(`${errCount} couldn't be added`);
+    console.log('Document not loaded properly');
+  } else {
+    console.log('The objects were inserted successfully');
+  }
+});
 }
 
