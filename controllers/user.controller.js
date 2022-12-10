@@ -82,3 +82,10 @@ module.exports.freeEndpoint = async (req,res,next)=>{
 module.exports.authEndpoint = async (req,res,next)=>{
     res.json({ message: "You are authorized to access me" });
 }
+
+module.exports.makeAdmin = async(req,res,next) =>{
+    const {_id} = req.body;
+    const updateUser = await User.updateOne({_id: _id},{$set:{admin:"admin"}});
+    res.status(200).json({msg:"Updated"})
+}
+

@@ -9,5 +9,7 @@ const MovieSchema=new Schema({
     createdBy:{type:String, required:true}
     // contentRating:{}
 })
+MovieSchema.index({title:1,year:1},{unique:true})
 const Movie=model("movie",MovieSchema)
+
 module.exports=Movie;
