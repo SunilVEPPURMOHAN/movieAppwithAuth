@@ -56,6 +56,7 @@ const token = jwt.sign(
 
     return res.status(200).json({message:"Logged in Successfully",email: email,
             token})
+        
 };
 
 module.exports.findAllUsers = (req, res, next) => {

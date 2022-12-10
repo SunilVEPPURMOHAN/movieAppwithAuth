@@ -16,14 +16,20 @@ module.exports.createMovies = async(req,res,next)=>{
  
 
 module.exports.findMovies = async(req,res,next) =>{
-    const {genre,createdBy} = req.body;
-    try{
-        const data = await Movie.find({genre:genre, createdBy: createdBy});
-        return res.status(200).json(data);
+    
+    
+       Movie.find((err,docs) => {
+if(err) {
+return res.status(202).json(err)
+// console.log(err)
+} else {
+return res.status(200).json(docs)
+// console.log(docs)
 }
-    catch(e){
-        next(e);
-    }}
+       }
+       )
+  
+   }
 
 module.exports.deleteMovies = async(req,res,next)=>{
     const {title, year} = req.body;

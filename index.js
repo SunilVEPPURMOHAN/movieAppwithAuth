@@ -2,6 +2,7 @@ const express=require('express');
 const conn=require("./config/db");
 require('dotenv').config()
 const userRouter=require("./routes/user.route");
+const movieRouter = require("./routes/movie.route");
 const { setupDefault } = require('./startUp/defaultdb');
 const app=express();
 
@@ -25,6 +26,7 @@ app.get("/",(req,res)=>{
     res.send("welcome")
 })
 app.use("/user",userRouter)
+app.use("/movie",movieRouter)
 
 
 
