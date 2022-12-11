@@ -20,7 +20,7 @@ module.exports.findMovies = async(req,res,next) =>{
     
        Movie.find((err,docs) => {
 if(err) {
-return res.status(202).json(err)
+return res.status(300).json(err)
 // console.log(err)
 } else {
 return res.status(200).json(docs)

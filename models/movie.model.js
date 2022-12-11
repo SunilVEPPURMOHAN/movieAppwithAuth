@@ -7,7 +7,8 @@ const MovieSchema=new Schema({
     posterurl:{type:String,required:true},
     imdbRating: {type:Number, required:true, min: 1, max:10},
     createdBy:{type:String, required:true},
-    actors:{type:[String], required:true}
+    actors:{type:[String], required:true},
+    poster:{type:String, required:true}
     
     // contentRating:{}
 })
