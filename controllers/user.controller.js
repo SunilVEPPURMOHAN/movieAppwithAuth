@@ -40,10 +40,10 @@ module.exports.loginUser = async(req,res,next)=>{
 
     const checkEmail = await User.findOne({email});
     if(!checkEmail){
-        return res.status(202).json({message:"User doesn't exist"});
+        return res.status(300).json({message:"User doesn't exist"});
     }
     if(!bcrypt.compareSync(password,checkEmail.password)){
-        return res.status(202).json({message:"Invalid credentials"})
+        return res.status(300).json({message:"Invalid credentials"})
     }
 const token = jwt.sign(
           {
