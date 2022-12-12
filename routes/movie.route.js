@@ -1,8 +1,10 @@
 const express=require("express");
-const { findMovies } = require("../controllers/movie.controller");
+const auth = require("../controllers/auth");
+const { findMovies, myMovies } = require("../controllers/movie.controller");
 
 const router = express.Router();
 
-router.get("/home", findMovies);
+router.get("/home", auth, findMovies);
+router.get("/mymovies", auth, myMovies);
 
 module.exports = router

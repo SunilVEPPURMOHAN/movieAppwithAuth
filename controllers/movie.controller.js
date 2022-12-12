@@ -33,8 +33,16 @@ return res.status(200).json(docs)
 
 module.exports.deleteMovies = async(req,res,next)=>{
     const {title, year} = req.body;
-    Tank.deleteOne({ title: title, year: year }, function (err) {
+    Movie.deleteOne({ title: title, year: year }, function (err) {
         if (err) res.status(400).json(err);
         // deleted at most one tank document
       });
+}
+
+module.exports.myMovies = async(req,res,next)=>{
+    const {_id, email} = req.body;
+    Movie.find({createdBy:email})
+        .then((docs)=> res.status(200).json(docs))
+        .catch((err)=>res.status(300).json(err))
+
 }
