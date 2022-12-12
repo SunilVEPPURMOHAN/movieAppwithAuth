@@ -38,7 +38,7 @@ module.exports.loginUser = async(req,res,next)=>{
 
     const hashPassword = bcrypt.hashSync(password, saltrounds);
 
-    const checkEmail = await User.findOne({email});
+    const checkEmail = await User.findOne({email:email});
     if(!checkEmail){
         return res.status(300).json({message:"User doesn't exist"});
     }
