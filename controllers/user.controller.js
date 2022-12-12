@@ -22,7 +22,7 @@ const hashPassword = bcrypt.hashSync(password, saltrounds);
     const user = await User.create({...req.body, password:hashPassword});
         // const user = await User.create(req.body);
 
-    return res.status(200).json(user)
+    return res.status(200).json({msg: "New user created"})
     }
     catch (e) {
     next(e);
