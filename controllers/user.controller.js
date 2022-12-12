@@ -14,7 +14,7 @@ module.exports.createUser= async (req,res,next)=>{
         
     }
 
-    const checkEmail = await User.findOne({email});
+    const checkEmail = await User.findOne({email:email});
     // console.log(checkEmail);
     if(checkEmail){
         return res.status(202).json({msg:"Email already exists"})
