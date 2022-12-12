@@ -67,13 +67,13 @@ module.exports.findAllUsers = (req, res, next) => {
         .catch((e)=>next(e));
 };
 
-module.exports.findUser=(req,res,next)=>{
-    const {id} = req.params
-    User.findOne({_id:id})
-        .then((r)=>{
-            return res.json(r);
-        })
-}
+// module.exports.findUser=(req,res,next)=>{
+//     const {id} = req.params
+//     User.findOne({_id:id})
+//         .then((r)=>{
+//             return res.json(r);
+//         })
+// }
 
 
 module.exports.freeEndpoint = async (req,res,next)=>{

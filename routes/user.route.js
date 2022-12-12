@@ -12,7 +12,7 @@ router.get("/free-endpoint", freeEndpoint);
 router.get("/auth-endpoint", auth, authEndpoint);
 
 router.get("/",findAllUsers)
-router.get("/:id",findUser)
+// router.get("/:id",findUser)
 
 
 

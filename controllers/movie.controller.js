@@ -40,8 +40,9 @@ module.exports.deleteMovies = async(req,res,next)=>{
 }
 
 module.exports.myMovies = async(req,res,next)=>{
-    const {_id, email} = req.body;
-    Movie.find({createdBy:email})
+    const {userId, userEmail} = req.user;
+    // console.log(req.body);
+    Movie.find({createdBy:userEmail})
         .then((docs)=> res.status(200).json(docs))
         .catch((err)=>res.status(300).json(err))
 

@@ -5,6 +5,7 @@ module.exports = async (request, response, next) => {
     //   get the token from the authorization header
     const token = await request.headers.authorization.split(" ")[1];
 
+    
     //check if the token matches the supposed origin
     const decodedToken = await jwt.verify(token, "RANDOM-TOKEN");
 
