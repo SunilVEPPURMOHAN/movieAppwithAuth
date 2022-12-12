@@ -6,7 +6,7 @@ module.exports.createMovies = async(req,res,next)=>{
     Movie.create(moviedb,(err,docs)=>{
         if(err){
       
-        res.status(400).json({message:'Check your input'});
+        res.status(202).json({message:'Check your input'});
 
     }else{
         res.status(200).json({ message: 'Documents added successfully' });
@@ -20,7 +20,7 @@ module.exports.findMovies = async(req,res,next) =>{
     
        Movie.find((err,docs) => {
 if(err) {
-return res.status(400).json(err)
+return res.status(202).json(err)
 // console.log(err)
 } else {
 return res.status(200).json(docs)
