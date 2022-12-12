@@ -4,7 +4,7 @@ const { saltrounds } = require("../controllers/user.controller");
 const fs = require('fs');
 const Movie = require("../models/movie.model");
 const moviedb = require("./moviedb.json");
-moviedb.forEach((movie)=>{movie.createdBy = "admin"})
+moviedb.forEach((movie)=>{movie.createdBy = "admin@email.com"})
  
 module.exports.setupDefault = async(req,res,next)=>{
 // Creating default admin account
