@@ -11,7 +11,6 @@ module.exports.createUser= async (req,res,next)=>{
     if(!name|!email|!password|!admin){
         // console.log(res.json())
         return res.status(202).json({msg:"Fill the details correctly"})
-        
     }
 
     const checkEmail = await User.findOne({email:email});
