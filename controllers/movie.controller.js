@@ -42,7 +42,7 @@ module.exports.deleteMovies = async(req,res,next)=>{
 module.exports.myMovies = async(req,res,next)=>{
     const {userId, userEmail} = req.user;
     // console.log(req.body);
-    Movie.find({createdBy:userEmail})
+    Movie.find({createdBy:userId})
         .then((docs)=> res.status(200).json(docs))
         .catch((err)=>res.status(400).json(err))
 

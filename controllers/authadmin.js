@@ -14,6 +14,10 @@ const token = await request.headers.authorization.split(" ")[1];
     // pass the user down to the endpoints here
     request.user = user;
 
+    if(user.userAdmin !== 'admin') return res.status(300).json({
+      error: new Error("You are not an admin!")
+    })
+
     // pass down functionality to the endpoint
     next();
     
