@@ -28,7 +28,8 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 app.get("/",(req,res)=>{
-    res.send("welcome")
+    res.send("welcome");
+    console.log(req.headers)
 })
 app.use("/user",userRouter)
 app.use("/movie",movieRouter)
