@@ -25,22 +25,21 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use(express.json())
+
+
+app.use("/user",userRouter)
+app.use("/movie",movieRouter)
+
 app.get("/",(req,res)=>{
     res.send("welcome");
     console.log(req.headers)
 })
 
 
-
-
-setupDefault();
-
 app.listen(process.env.PORT,async()=>{
     await conn
     console.log(`server started on port ${process.env.PORT}`)
 })
 
-app.use("/user",userRouter)
-app.use("/movie",movieRouter)
+setupDefault();
