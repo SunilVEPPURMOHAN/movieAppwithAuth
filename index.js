@@ -8,6 +8,9 @@ const { setupDefault } = require('./startUp/defaultdb');
 const app=express();
 // app.use(cors());
 
+
+app.use(express.json())
+
 // Curb Cores Error by adding a header here
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", '*');
@@ -24,8 +27,6 @@ app.use((req, res, next) => {
   );
   next();
 });
-
-app.use(express.json())
 
 
 app.use("/user",userRouter)
