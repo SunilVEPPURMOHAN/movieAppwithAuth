@@ -1,7 +1,16 @@
 const Movie = require("../models/movie.model");
 
 module.exports.createMovies = async(req,res,next)=>{
-    const moviedb = req.body;
+    const {userId, userEmail} = req.user;
+    const { title, year, genres, imdbRating} = req.body;
+    const moviedb = [{title:title,year: year,genres:genres,imdbRating:imdbRating,
+    poster: "MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY500_CR0,0,337,500_AL_.jpg",
+    posterurl: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY500_CR0,0,337,500_AL_.jpg",
+    actors:["Unknown"],
+    createdBy:userId
+}];
+
+    if(genres.length === 0) return res.status(202).json({message:"You didn't add genre details"});
     // console.log(moviedb);
     Movie.create(moviedb,(err,docs)=>{
         if(err){
@@ -9,7 +18,7 @@ module.exports.createMovies = async(req,res,next)=>{
         res.status(202).json({message:'Check your input'});
 
     }else{
-        res.status(200).json({ message: 'Documents added successfully' });
+        res.status(200).json({ message: 'Document added successfully' });
     }
     });
 }
